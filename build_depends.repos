@@ -1,0 +1,14 @@
+repositories:
+  autoware_common:
+    type: git
+    url: https://github.com/autowarefoundation/autoware_common.git
+    version: main
+  sensor_component_description:
+    type: git
+    url: https://github.com/tier4/sensor_component_description.git
+    version: main
+  ouster_description:
+    type: git
+    url: https://github.com/clearpathrobotics/ouster_description.git
+    version: main
+
