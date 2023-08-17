@@ -32,8 +32,8 @@
              ${calibration['sensor_kit_base_link']['lidar_ouster_left']['pitch']}
              ${calibration['sensor_kit_base_link']['lidar_ouster_left']['yaw']}"
       />
-    </xacro:OS1-64>
-    <xacro:OS1-64 parent="sensor_kit_base_link" name="lidar_ouster_right" hz="10" lasers="128" samples="1024" collision_range="0.3" min_range="0.3" max_range="100.0" noise="0.008" min_angle="-${M_PI}" max_angle="${M_PI}" gpu="$(arg gpu)">
+    </xacro:VLS-128>
+    <xacro:VLS-128 parent="sensor_kit_base_link" name="lidar_ouster_right" hz="10" lasers="128" samples="1024" collision_range="0.3" min_range="0.3" max_range="100.0" noise="0.008" min_angle="-${M_PI}" max_angle="${M_PI}" gpu="$(arg gpu)">
       <origin
         xyz="${calibration['sensor_kit_base_link']['lidar_ouster_right']['x']}
              ${calibration['sensor_kit_base_link']['lidar_ouster_right']['y']}
@@ -42,7 +42,7 @@
              ${calibration['sensor_kit_base_link']['lidar_ouster_right']['pitch']}
              ${calibration['sensor_kit_base_link']['lidar_ouster_right']['yaw']}"
       />
-    </xacro:OS1-64>
+    </xacro:VLS-128>
     <xacro:VLS-128 parent="sensor_kit_base_link" name="lidar_innovusion_front" hz="10" lasers="60" samples="1500" collision_range="0.3" min_range="0.3" max_range="250.0" noise="0.008" min_angle="-${M_PI}" max_angle="${M_PI}" gpu="$(arg gpu)">
       <origin
         xyz="${calibration['sensor_kit_base_link']['lidar_innovusion_front']['x']}
@@ -53,7 +53,7 @@
              ${calibration['sensor_kit_base_link']['lidar_innovusion_front']['yaw']}"
       />
     </xacro:VLS-128>
-    <xacro:VLS-128 parent="sensor_kit_base_link" name="lidar_innovusion_front" hz="10" lasers="60" samples="1500" collision_range="0.3" min_range="2" max_range="250.0" noise="0.008" min_angle="-0.698" max_angle="$0.698" gpu="$(arg gpu)">
+    <xacro:VLS-128 parent="sensor_kit_base_link" name="lidar_innovusion_rear" hz="10" lasers="60" samples="1500" collision_range="0.3" min_range="2" max_range="250.0" noise="0.008" min_angle="-0.698" max_angle="$0.698" gpu="$(arg gpu)">
       <origin
         xyz="${calibration['sensor_kit_base_link']['lidar_innovusion_rear']['x']}
              ${calibration['sensor_kit_base_link']['lidar_innovusion_rear']['y']}
