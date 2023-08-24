@@ -12,9 +12,8 @@
     </include>
 
     <!-- Camera Driver -->
-    <!-- <include file="$(find-pkg-share edgar_sensor_kit_launch)/launch/camera.launch.xml">
-      <arg name="launch_driver" value="$(var launch_driver)" />
-    </include> -->
+    <include file="$(find-pkg-share edgar_sensor_kit_launch)/launch/camera.launch.xml">
+    </include>
 
     <!-- IMU Driver -->
     <!-- <include file="$(find-pkg-share edgar_sensor_kit_launch)/launch/imu.launch.xml">
