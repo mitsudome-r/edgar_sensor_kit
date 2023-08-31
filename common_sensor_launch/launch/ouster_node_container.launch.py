@@ -74,11 +74,25 @@ def launch_setup(context, *args, **kwargs):
 
     nodes.append(
         ComposableNode(
+            package="timestamp_overwrite",
+            plugin="timestamp_overwrite::OverwritePointCloudTimeStamp",
+            name="overwrite_pointcloud_timestamp",
+            remappings=[
+                ("~/input", LaunchConfiguration("input_topic")),
+                ("~/output", "pointcloud_stamped"),
+            ],
+            parameters=[cropbox_parameters],
+            extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
+        )
+    )
+
+    nodes.append(
+        ComposableNode(
             package="pointcloud_preprocessor",
             plugin="pointcloud_preprocessor::CropBoxFilterComponent",
             name="crop_box_filter_self",
             remappings=[
-                ("input", LaunchConfiguration("input_topic")),
+                ("input", "pointcloud_stamped"),
                 ("output", "self_cropped/pointcloud"),
             ],
             parameters=[cropbox_parameters],
