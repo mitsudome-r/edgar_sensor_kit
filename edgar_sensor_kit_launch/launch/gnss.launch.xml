@@ -1,6 +1,6 @@
 <launch>
   <arg name="navsatfix_topic_name" default="/edgar/sensor/gps/novatel/fix" description="topic name of input NavSatFix message"/>
-  <arg name="coordinate_system" default="1" description="0:UTM, 1:MGRS, 2:PLANE"/>
+  <arg name="coordinate_system" default="4" description="0:UTM, 1:MGRS, 2:PLANE, 3:LocalCartesianWGS84, 4:LocalCartesianUTM"/>
   <arg name="use_gnss_ins_orientation" default="false"/>
 
   <group>
@@ -22,6 +22,8 @@
       <arg name="use_gnss_ins_orientation" value="$(var use_gnss_ins_orientation)"/>
 
       <arg name="gnss_frame" value="gnss_left"/>
+
+      <arg name="param_file" value="$(find-pkg-share edgar_sensor_kit_launch)/config/gnss_poser.param.yaml"/>
     </include>
   </group>
 </launch>
