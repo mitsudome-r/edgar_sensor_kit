@@ -4,16 +4,27 @@
     <group>
       <push-ros-namespace namespace="camera_fc"/>
 
+      <node pkg="timestamp_overwrite" exec="overwrite_camera_info_header" name="overwrite_camera_info_header" output="log">
+        <remap from="~/input" to="/edgar/sensor/camera/basler/cam_fc/camera_info"/>
+        <remap from="~/output" to="/edgar/sensor/camera/basler/cam_fc/camera_info_fixed"/>
+        <param name="frame_id" value="cam_fc/camera_link"/>
+      </node>
+      <node pkg="timestamp_overwrite" exec="overwrite_image_header" name="overwrite_image_header" output="log">
+        <remap from="~/input" to="/edgar/sensor/camera/basler/cam_fc/image_raw"/>
+        <remap from="~/output" to="/edgar/sensor/camera/basler/cam_fc/image_raw_fixed"/>
+        <param name="frame_id" value="cam_fc/camera_link"/>
+      </node>
+
       <!-- (usb_cam_node is assumed to have launched on logging PC) -->
       <node pkg="topic_tools" exec="relay" name="camera_info_relay_fc" output="log">
-        <param name="input_topic" value="/edgar/sensor/camera/basler/cam_fc/camera_info"/>
+        <param name="input_topic" value="/edgar/sensor/camera/basler/cam_fc/camera_info_fixed"/>
         <param name="output_topic" value="camera_info"/>
         <param name="type" value="sensor_msgs/msg/CameraInfo"/>
         <param name="reliability" value="best_effort"/>
       </node>
 
       <node pkg="topic_tools" exec="relay" name="camera_image_relay_fc" output="log">
-        <param name="input_topic" value="/edgar/sensor/camera/basler/cam_fc/image_raw"/>
+        <param name="input_topic" value="/edgar/sensor/camera/basler/cam_fc/image_raw_fixed"/>
         <param name="output_topic" value="image_raw"/>
         <param name="type" value="sensor_msgs/msg/Image"/>
         <param name="reliability" value="best_effort"/>
